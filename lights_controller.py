@@ -11,3 +11,4 @@ class LightsController():
     
     def setLightColor(self, index, color):
         self.pixels[index] = color
+        print("Set light number", index, "to color", color)

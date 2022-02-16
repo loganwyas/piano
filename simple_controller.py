@@ -12,7 +12,7 @@ class SimpleController:
         self.prev_light = 0
 
         # initialize the lights API
-        self.lights_api = LightsController()
+        self.lights_api = LightsController(num_lights)
 
 
     def process_event(self, event):

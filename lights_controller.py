@@ -2,9 +2,9 @@ import board
 import neopixel
 
 class LightsController():
-    def __init__(self):
+    def __init__(self, num_lights):
         self.pixels = neopixel.NeoPixel(board.D18,
-                                        self.num_lights,
+                                        num_lights,
                                         brightness=1,
                                         pixel_order=neopixel.RGB)
         self.pixels.fill((0,0,0))

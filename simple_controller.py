@@ -1,6 +1,4 @@
-# libraries for controlling lights
-import board
-import neopixel
+from lights_controller import LightsController
 
 class SimpleController:
     DOWN = 144
@@ -13,12 +11,8 @@ class SimpleController:
         self.next_light = 0
         self.prev_light = 0
 
-        # initialize the lights array, turn all lights off
-        self.pixels = neopixel.NeoPixel(board.D18,
-                                        self.num_lights,
-                                        brightness=1,
-                                        pixel_order=neopixel.RGB)
-        self.pixels.fill((0,0,0))
+        # initialize the lights API
+        self.lights_api = LightsController()
 
 
     def process_event(self, event):
@@ -26,8 +20,8 @@ class SimpleController:
         state = message[0]
         print(message, deltatime)
         if state == SimpleController.DOWN:
-            self.pixels[self.next_light % self.num_lights] = self.color_on
+            self.lights_api.setLightColor(self.next_light % self.num_lights, self.color_on)
             self.next_light+=1
         else:
-            self.pixels[self.prev_light % self.num_lights] = self.color_off
+            self.lights_api.setLightColor(self.prev_light % self.num_lights, self.color_off)
             self.prev_light+=1

@@ -1,6 +1,8 @@
 # libraries for controlling lights
 import board
 import neopixel
+import sys
+sys.path.append(".")
 from simple_controller import SimpleController
 
 class RainbowController(SimpleController):
